@@ -15,16 +15,19 @@ float medianOfThree(float* p, int left, int right);
 void swap(float* p, int dex1, int dex2);
 int partitionIt(float* p, int left, int right, double pivot);
 void printArray(float* p);
+void generateFiles(int num_files, int floats);
 
-string file_name;
+string in_file_name;
+string out_file_name;
 int array_size;
 float* arr_ptr;
 
 int main()
 {
-    cout << "What is the file name?" << endl;
-    cin >> file_name;
-    
+    cout << "What is the input file name?" << endl;
+    cin >> in_file_name;
+    cout << "What is the output file name?" << endl;
+    cin>> out_file_name;
     cout << "How many floating-point numbers are in the file?" << endl;
     cin >> array_size;
     if(array_size <= 0) {
@@ -52,7 +55,7 @@ int main()
 void readAndParseFile(float* p) {
     fstream newFile;
     string str;
-    newFile.open(file_name,ios::in);
+    newFile.open(in_file_name,ios::in);
     if(newFile.is_open())
     {
         getline(newFile, str);
@@ -129,6 +132,10 @@ void printArray(float* p) {
         cout << p[i] << " ";
     }
     cout << endl;
+}
+
+void generateFiles(int num_files, int floats) {
+
 }
 
 
