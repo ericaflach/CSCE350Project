@@ -29,9 +29,11 @@ int main(int argc, char **argv)
     in_file_name = argv[1];
     out_file_name = argv[2];
     cout << "Input File Name: " << endl;
-    cout << in_file_name;
+    cout << in_file_name << endl;;
+    //cin >> in_file_name;
     cout << "Output File Name: " << endl;
-    cout << out_file_name;
+    //cin >> out_file_name;
+    cout << out_file_name << endl;
     //array_size = 10;
     if(array_size <= 0) {
         cout << "Invalid Size" << endl;
@@ -48,6 +50,8 @@ int main(int argc, char **argv)
     printArray(arr_ptr);
     quickSort(arr_ptr);
     writeOutput(arr_ptr);
+    cout << "Sorted Array: " << endl;
+    printArray(arr_ptr);
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop-start);
