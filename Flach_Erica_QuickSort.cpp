@@ -19,9 +19,9 @@ void manualSort(float*p, int left, int right);
 void printArray(float* p);
 void generateFiles(int num_files, int floats);
 
-string in_file_name;
-string out_file_name;
-int array_size;
+string in_file_name = "";
+string out_file_name = "";
+int array_size = 10;
 float* arr_ptr;
 
 int main(int argc, char **argv)
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     cout << in_file_name;
     cout << "Output File Name: " << endl;
     cout << out_file_name;
-    array_size = 10;
+    //array_size = 10;
     if(array_size <= 0) {
         cout << "Invalid Size" << endl;
         exit(0);
