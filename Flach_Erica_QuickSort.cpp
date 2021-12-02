@@ -4,8 +4,6 @@
 #include <chrono>
 #include <cmath>
 #include <algorithm>
-#include <stdio.h>
-#include <compare>
 
 using namespace std::chrono;
 using namespace std;
@@ -26,14 +24,15 @@ string out_file_name;
 int array_size;
 float* arr_ptr;
 
-int main()
+int main(int argc, char **argv)
 {
-    cout << "What is the input file name?" << endl;
-    cin >> in_file_name;
-    cout << "What is the output file name?" << endl;
-    cin>> out_file_name;
-    cout << "How many floating-point numbers are in the file?" << endl;
-    cin >> array_size;
+    in_file_name = argv[1];
+    out_file_name = argv[2];
+    cout << "Input File Name: " << endl;
+    cout << in_file_name;
+    cout << "Output File Name: " << endl;
+    cout << out_file_name;
+    array_size = 10;
     if(array_size <= 0) {
         cout << "Invalid Size" << endl;
         exit(0);
