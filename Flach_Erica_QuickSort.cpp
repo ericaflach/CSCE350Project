@@ -5,6 +5,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdio.h>
+#include <compare>
 
 using namespace std::chrono;
 using namespace std;
