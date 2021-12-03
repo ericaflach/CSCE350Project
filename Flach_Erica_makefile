@@ -1,8 +1,9 @@
-compile: Flach_Erica_QuickSort.cpp
+compile:
 	g++ Flach_Erica_QuickSort.cpp -o Flach_Erica_QuickSort
 
 execute: Flach_Erica_QuickSort.cpp input.txt output.txt
 	./Flach_Erica_QuickSort.cpp input.txt output.txt
 
 both: 
-	make compile make execute
+	make compile 
+	make execute
