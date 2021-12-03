@@ -17,69 +17,33 @@ void swap(float* p, int dex1, int dex2);
 int partitionIt(float* p, int left, int right, double pivot);
 void manualSort(float*p, int left, int right);
 void printArray(float* p);
-void generateFiles(int num_files, int floats);
 
-string in_file_name = "";
-string out_file_name = "";
-int array_size = 10;
+string in_file_name;
+string out_file_name;
+int array_size = 0;
 float* arr_ptr;
-
-int main(int argc, char **argv)
-{
-    in_file_name = argv[1];
-    out_file_name = argv[2];
-    cout << "Input File Name: " << endl;
-    cout << in_file_name << endl;;
-    //cin >> in_file_name;
-    cout << "Output File Name: " << endl;
-    //cin >> out_file_name;
-    cout << out_file_name << endl;
-    //array_size = 10;
-    if(array_size <= 0) {
-        cout << "Invalid Size" << endl;
-        exit(0);
-    }
-
-    float arr[array_size];
-    arr_ptr = arr;
-    
-    auto start = high_resolution_clock::now();
-    
-    readAndParseFile(arr_ptr);
-    cout << "Unsorted Array: " << endl;
-    printArray(arr_ptr);
-    quickSort(arr_ptr);
-    writeOutput(arr_ptr);
-    cout << "Sorted Array: " << endl;
-    printArray(arr_ptr);
-
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(stop-start);
-    cout << "Execution Time: " << duration.count() << " milliseconds" << endl;
-    return 0;
-}
 
 void readAndParseFile(float* p) {
     fstream newFile;
     string str;
     newFile.open(in_file_name,ios::in);
-    if(newFile.is_open())
-    {
-        getline(newFile, str);
-        newFile.close();
-    }
+        if(newFile.is_open())
+        {
+            getline(newFile, str);
+            newFile.close();
+        }
 
     string delimiter = " ";
     size_t pos = 0;
     string token;
     int index = 0;
-    while((pos = str.find(delimiter)) != std::string::npos) {
-        token = str.substr(0,pos);
-        float token_float = stof(token);
-        p[index] = token_float;
-        index++;
-        str.erase(0, pos + delimiter.length());
-    }
+        while((pos = str.find(delimiter)) != std::string::npos) {
+            token = str.substr(0,pos);
+            float token_float = stof(token);
+            p[index] = token_float;
+            index++;
+            str.erase(0, pos + delimiter.length());
+        }
 }
 
 void writeOutput(float* p) {
@@ -174,10 +138,32 @@ void printArray(float* p) {
     cout << endl;
 }
 
-void generateFiles(int num_files, int floats) {
+int main(int argc, char **argv)
+{
+    in_file_name = argv[1];
+    out_file_name = argv[2];
+    
+    cout << "Input File Name: " << endl;
+    cout << in_file_name << endl;;
+    cout << "Output File Name: " << endl;
+    cout << out_file_name << endl;
+    array_size = 10;
 
+    float arr[array_size];
+    arr_ptr = arr;
+    
+    auto start = high_resolution_clock::now();
+    
+    readAndParseFile(arr_ptr);
+    cout << "Unsorted Array: " << endl;
+    printArray(arr_ptr);
+    quickSort(arr_ptr);
+    writeOutput(arr_ptr);
+    cout << "Sorted Array: " << endl;
+    printArray(arr_ptr);
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(stop-start);
+    cout << "Execution Time: " << duration.count() << " milliseconds" << endl;
+    return 0;
 }
-
-
-
-
