@@ -1,12 +1,2 @@
 compile:
 	g++ Flach_Erica_QuickSort.cpp -o Flach_Erica_QuickSort
-<<<<<<< HEAD
-
-execute: Flach_Erica_QuickSort.cpp input.txt output.txt
-	./Flach_Erica_QuickSort.cpp input.txt output.txt
-
-both: 
-	make compile 
-	make execute
-=======
->>>>>>> 225b1263e53b922a6fed18ceb19bd59693691b26
