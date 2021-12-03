@@ -1,3 +1,6 @@
+/*
+Written by Erica Flach
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -25,7 +28,7 @@ string time_file_name = "Flach_Erica_ExecutionTime.txt";
 int array_size = 0;
 float* arr_ptr;
 
-void readAndParseFile(float* p) {
+void readAndParseFile(float* p) {//Reads the file and places each floating point number into the array
     fstream newFile;
     string str;
     newFile.open(in_file_name,ios::in);
@@ -48,7 +51,7 @@ void readAndParseFile(float* p) {
         }
 }
 
-void writeOutput(float* p) {
+void writeOutput(float* p) {//Writes the sorted array into the output file
     ofstream myfile (out_file_name);
     if (myfile.is_open())
     {
@@ -64,7 +67,7 @@ void quickSort(float* p) {
     recQuickSort(p, 0, array_size-1);
 }
 
-void recQuickSort(float* p, int left, int right) {
+void recQuickSort(float* p, int left, int right) {//Quicksort alorithm
     int size = right - left + 1;
     if(size <= 3)
         manualSort(p, left, right);
@@ -76,7 +79,7 @@ void recQuickSort(float* p, int left, int right) {
     }
 }
 
-float medianOfThree(float* p, int left, int right) {
+float medianOfThree(float* p, int left, int right) {//selects pivot based on median of first, middle, and last values
     int center = round((left + right) / 2);
     if(p[left] > p[center]){
         swap(p, left, center);
@@ -91,13 +94,13 @@ float medianOfThree(float* p, int left, int right) {
     return p[right-1];
 }
 
-void swap(float* p, int dex1, int dex2) {
+void swap(float* p, int dex1, int dex2) {//Swaps two array values
     float temp = p[dex1];
     p[dex1] = p[dex2];
     p[dex2] = temp;
 }
 
-int partitionIt(float* p, int left, int right, double pivot) {
+int partitionIt(float* p, int left, int right, double pivot) {//Partitions the array into greater than and less that pivot
     int leftPtr = left;
     int rightPtr = right-1;
     while(true) {
@@ -114,7 +117,7 @@ int partitionIt(float* p, int left, int right, double pivot) {
     return leftPtr;
 }
 
-void manualSort(float*p, int left, int right) {
+void manualSort(float*p, int left, int right) {//Sorting the array once there are only a few elements left
     int size = right - left + 1;
     if(size <= 1)
         return;
@@ -133,14 +136,14 @@ void manualSort(float*p, int left, int right) {
     }
 }
 
-void printArray(float* p) {
+void printArray(float* p) {//Prints array
     for(int i = 0; i < array_size; i++) {
         cout << p[i] << " ";
     }
     cout << endl;
 }
 
-void writeTime(string time) {
+void writeTime(string time) {//Writes the execution time to ExecutionTime.txt
     ofstream myfile (time_file_name);
     if (myfile.is_open())
     {
