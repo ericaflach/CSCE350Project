@@ -1,0 +1,2 @@
+make: Flach_Erica_QuickSort.cpp
+	g++ Flach_Erica_QuickSort.cpp -o Flach_Erica_QuickSort
