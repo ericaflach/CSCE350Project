@@ -17,9 +17,11 @@ void swap(float* p, int dex1, int dex2);
 int partitionIt(float* p, int left, int right, double pivot);
 void manualSort(float*p, int left, int right);
 void printArray(float* p);
+void writeTime(string time);
 
 string in_file_name;
 string out_file_name;
+string time_file_name = "Flach_Erica_ExecutionTime.txt";
 int array_size = 0;
 float* arr_ptr;
 
@@ -138,15 +140,21 @@ void printArray(float* p) {
     cout << endl;
 }
 
+void writeTime(string time) {
+    ofstream myfile (time_file_name);
+    if (myfile.is_open())
+    {
+        myfile << time;
+        myfile.close();
+    }
+    else cout << "Unable to open file";
+}
+
 int main(int argc, char **argv)
 {
     in_file_name = argv[1];
     out_file_name = argv[2];
-    
-    cout << "Input File Name: " << endl;
-    cout << in_file_name << endl;;
-    cout << "Output File Name: " << endl;
-    cout << out_file_name << endl;
+
     array_size = 10;
 
     float arr[array_size];
@@ -155,15 +163,12 @@ int main(int argc, char **argv)
     auto start = high_resolution_clock::now();
     
     readAndParseFile(arr_ptr);
-    cout << "Unsorted Array: " << endl;
-    printArray(arr_ptr);
     quickSort(arr_ptr);
     writeOutput(arr_ptr);
-    cout << "Sorted Array: " << endl;
-    printArray(arr_ptr);
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop-start);
-    cout << "Execution Time: " << duration.count() << " milliseconds" << endl;
+    string time = "Execution Time: " + std::to_string(duration.count()) + " milliseconds";
+    writeTime(time);
     return 0;
 }
