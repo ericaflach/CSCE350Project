@@ -1,4 +1,4 @@
-# CSCE350Project
+# CSCE350Project_Flach_Erica
 
 # to compile Flach_Erica_QuickSort, use command "make Flach_Erica_QuickSort.cpp".
 # to execute the file, use "./Flach_Erica_QuickSort input.txt output.txt".
